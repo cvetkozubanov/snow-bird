@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/snow-bird/static/css/main.e6c13ad2.css",
+    "main.js": "/snow-bird/static/js/main.ceb7c75c.js",
+    "index.html": "/snow-bird/index.html",
+    "main.e6c13ad2.css.map": "/snow-bird/static/css/main.e6c13ad2.css.map",
+    "main.ceb7c75c.js.map": "/snow-bird/static/js/main.ceb7c75c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.ceb7c75c.js"
+  ]
+}
