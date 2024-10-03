@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { ChangeEvent, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
@@ -55,6 +55,13 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
   }
 }));
 
+const SubmitButton = styled(Button)(({ theme }) => ({
+  '&.Mui-disabled': {
+    color: theme.palette.text.secondary,
+    opacity: 0.5
+  }
+}));
+
 export const LoginForm = () => {
   const [t] = useTranslation('common');
   const { login } = useContext(AuthContext);
@@ -82,6 +89,11 @@ export const LoginForm = () => {
       });
     }
   });
+
+  const validateAfterTouch = (field: string, e: ChangeEvent) => {
+    formik.setFieldTouched(field, true);
+    formik.handleChange(e);
+  };
 
   return (
     <>
@@ -115,12 +127,12 @@ export const LoginForm = () => {
                 required
                 fullWidth
                 variant='outlined'
-                onChange={formik.handleChange}
+                onChange={(e) => validateAfterTouch('email', e)}
                 value={formik.values.email}
                 sx={{ ariaLabel: 'email' }}
-                error={!!formik.errors.email}
-                helperText={formik.errors.email ? formik.errors.email : ''}
-                color={formik.errors.email ? 'error' : 'primary'}
+                error={!!formik.errors.email && formik.touched.email}
+                helperText={formik.errors.email && formik.touched.email ? formik.errors.email : ''}
+                color={formik.errors.email && formik.touched.email ? 'error' : 'primary'}
               />
             </FormControl>
             <FormControl>
@@ -134,17 +146,19 @@ export const LoginForm = () => {
                 autoComplete='current-password'
                 required
                 fullWidth
-                onChange={formik.handleChange}
+                onChange={(e) => validateAfterTouch('password', e)}
                 value={formik.values.password}
                 variant='outlined'
-                error={!!formik.errors.password}
-                helperText={formik.errors.password ? formik.errors.password : ''}
-                color={formik.errors.password ? 'error' : 'primary'}
+                error={!!formik.errors.password && formik.touched.password}
+                helperText={
+                  formik.errors.password && formik.touched.password ? formik.errors.password : ''
+                }
+                color={formik.errors.password && formik.touched.password ? 'error' : 'primary'}
               />
             </FormControl>
-            <Button disabled={submitting} type='submit' fullWidth variant='contained'>
+            <SubmitButton disabled={submitting} type='submit' fullWidth variant='contained'>
               {t('login')}
-            </Button>
+            </SubmitButton>
           </Box>
         </Card>
       </SignInContainer>
