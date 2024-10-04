@@ -9,7 +9,7 @@ import { SvgIconProps } from '@mui/material/SvgIcon';
 import { tabClasses } from '@mui/material/Tab';
 import { alpha, Components, Theme } from '@mui/material/styles';
 
-import { brand, gray } from '../themePrimitives';
+import { brand, gray } from '../../../components/shared-theme/themePrimitives';
 
 const IconComponent = React.forwardRef<SVGSVGElement, SvgIconProps>((props, ref) => (
   <UnfoldMoreRoundedIcon fontSize='small' {...props} ref={ref} />

@@ -5,7 +5,7 @@ import { svgIconClasses } from '@mui/material/SvgIcon';
 import { typographyClasses } from '@mui/material/Typography';
 import { alpha, Components, Theme } from '@mui/material/styles';
 
-import { gray, green, red } from '../themePrimitives';
+import { gray, green, red } from '../../../components/shared-theme/themePrimitives';
 
 export const dataDisplayCustomizations: Components<Theme> = {
   MuiList: {

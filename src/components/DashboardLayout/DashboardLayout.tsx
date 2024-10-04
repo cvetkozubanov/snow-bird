@@ -1,10 +1,10 @@
 import { FC } from 'react';
 
-type TestLayoutProps = {
+type DashboardLayoutProps = {
   children: React.ReactNode;
 };
 
-export const TestLayout: FC<TestLayoutProps> = ({ children }) => {
+export const DashboardLayout: FC<DashboardLayoutProps> = ({ children }) => {
   return (
     <>
       <div>{children}</div>

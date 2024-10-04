@@ -1,2 +1,2 @@
 export * from './auth';
-export * from './test-feature';
+export * from './dashboard-feature';

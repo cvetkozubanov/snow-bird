@@ -2,9 +2,9 @@ import { useContext } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 
 import { AuthContext } from '@/contexts';
-import { Login, TestFeature } from '@/features';
+import { DashboardFeature, Login } from '@/features';
 
-import AppTheme from './features/shared-theme/AppTheme';
+import AppTheme from './components/shared-theme/AppTheme';
 
 export const App = (props: { disableCustomTheme?: boolean }) => {
   const { user: currentUser } = useContext(AuthContext);
@@ -12,7 +12,7 @@ export const App = (props: { disableCustomTheme?: boolean }) => {
   if (currentUser) {
     routes = (
       <Routes>
-        <Route path='/' element={<TestFeature />} />
+        <Route path='/' element={<DashboardFeature />} />
         <Route path='*' element={<Navigate to='/' replace />} />
       </Routes>
     );

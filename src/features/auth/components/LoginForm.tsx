@@ -2,7 +2,6 @@ import { ChangeEvent, useContext, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
 import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
 import MuiCard from '@mui/material/Card';
 import CssBaseline from '@mui/material/CssBaseline';
 import FormControl from '@mui/material/FormControl';
@@ -14,6 +13,7 @@ import { styled } from '@mui/material/styles';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 
+import SnowBirdButton from '@/components/Button';
 import { AuthContext } from '@/contexts';
 
 import { LoginCredentials } from '../types';
@@ -52,13 +52,6 @@ const SignInContainer = styled(Stack)(({ theme }) => ({
     ...theme.applyStyles('dark', {
       backgroundImage: 'radial-gradient(at 50% 50%, hsla(210, 100%, 16%, 0.5), hsl(220, 30%, 5%))'
     })
-  }
-}));
-
-const SubmitButton = styled(Button)(({ theme }) => ({
-  '&.Mui-disabled': {
-    color: theme.palette.text.secondary,
-    opacity: 0.5
   }
 }));
 
@@ -156,9 +149,9 @@ export const LoginForm = () => {
                 color={formik.errors.password && formik.touched.password ? 'error' : 'primary'}
               />
             </FormControl>
-            <SubmitButton disabled={submitting} type='submit' fullWidth variant='contained'>
+            <SnowBirdButton disabled={submitting} type='submit' fullWidth variant='contained'>
               {t('login')}
-            </SubmitButton>
+            </SnowBirdButton>
           </Box>
         </Card>
       </SignInContainer>

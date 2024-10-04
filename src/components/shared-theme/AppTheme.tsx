@@ -1,6 +1,10 @@
 import * as React from 'react';
+import { useContext } from 'react';
 
 import { type ThemeOptions, createTheme, ThemeProvider } from '@mui/material/styles';
+
+import SnowBirdButton from '@/components/Button';
+import { AuthContext } from '@/contexts';
 
 import ColorModeSelect from './ColorModeSelect';
 import { dataDisplayCustomizations } from './customizations/dataDisplay';
@@ -20,6 +24,7 @@ interface AppThemeProps {
 }
 
 export default function AppTheme({ children, disableCustomTheme, themeComponents }: AppThemeProps) {
+  const { user: currentUser, logout } = useContext(AuthContext);
   const theme = React.useMemo(() => {
     return disableCustomTheme
       ? {}
@@ -48,7 +53,17 @@ export default function AppTheme({ children, disableCustomTheme, themeComponents
   }
   return (
     <ThemeProvider theme={theme} disableTransitionOnChange>
-      <ColorModeSelect sx={{ position: 'fixed', top: '1rem', right: '1rem' }} />
+      <div style={{ textAlign: 'right' }}>
+        <ColorModeSelect sx={{ margin: '1rem' }} />
+        {currentUser && (
+          <SnowBirdButton
+            onClick={() => logout()}
+            style={{ marginRight: '10px' }}
+            variant='contained'>
+            Logout
+          </SnowBirdButton>
+        )}
+      </div>
       {children}
     </ThemeProvider>
   );

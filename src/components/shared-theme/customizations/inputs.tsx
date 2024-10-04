@@ -7,7 +7,7 @@ import { toggleButtonClasses } from '@mui/material/ToggleButton';
 import { toggleButtonGroupClasses } from '@mui/material/ToggleButtonGroup';
 import { alpha, Components, Theme } from '@mui/material/styles';
 
-import { brand, gray } from '../themePrimitives';
+import { brand, gray } from '../../../components/shared-theme/themePrimitives';
 
 export const inputsCustomizations: Components<Theme> = {
   MuiButtonBase: {
