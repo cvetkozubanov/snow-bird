@@ -39,7 +39,7 @@ export const DashboardComponent: FC<DashboardComponentProps> = ({ header }) => {
         onClick={(e) => e.stopPropagation()}
         style={{ height: 25 }}
         variant='contained'>
-        Evaluate
+        Calculate
       </SnowBirdButton>
     );
   }
@@ -93,7 +93,7 @@ export const DashboardComponent: FC<DashboardComponentProps> = ({ header }) => {
     {
       field: 'fileName',
       headerName: 'File Name',
-      flex: 1.5,
+      flex: 0.5,
       minWidth: 80
     },
     {
@@ -108,7 +108,7 @@ export const DashboardComponent: FC<DashboardComponentProps> = ({ header }) => {
       headerName: 'Calculate',
       headerAlign: 'right',
       align: 'right',
-      flex: 1,
+      flex: 0.5,
       minWidth: 80,
       renderCell: renderButton
     }
@@ -117,7 +117,7 @@ export const DashboardComponent: FC<DashboardComponentProps> = ({ header }) => {
   function addColumn() {
     const rowsCopy = [...data];
     const maxNo = rowsCopy.reduce((acc, value) => {
-      return (acc = acc > value.id ? acc : value.id);
+      return acc > value.id ? acc : value.id;
     }, 0);
     rowsCopy.unshift({
       id: maxNo + 1,
@@ -168,9 +168,12 @@ export const DashboardComponent: FC<DashboardComponentProps> = ({ header }) => {
                 </SnowBirdButton>
               </Grid>
               <Grid container spacing={2} columns={12}>
-                <Grid sx={{ width: '100%' }}>
-                  {CustomizedDataGrid(columns, data, rowsSelectionCallback)}
-                  {/* <CustomizedDataGrid headers={columns} rows2={rows}/> */}
+                <Grid sx={{ minWidth: 1000, width: '100%' }}>
+                  <CustomizedDataGrid
+                    headers={columns}
+                    rows={data}
+                    rowsSelectionCallback={rowsSelectionCallback}
+                  />
                 </Grid>
               </Grid>
               <Copyright sx={{ my: 4 }} />

@@ -10,12 +10,13 @@ interface HeaderProps {
   renderCell?: (params: GridRenderCellParams<any, any, any>) => void;
 }
 
-const CustomizedDataGrid = <T, >(
-  headers: HeaderProps[],
-  rows: T[],
-  rowsSelectionCallback: (items: []) => void
-) => {
+const CustomizedDataGrid = <T, >(props: {
+  headers: HeaderProps[];
+  rows: T[];
+  rowsSelectionCallback: (items: []) => void;
+}) => {
   const columns: GridColDef[] = [];
+  const { headers, rows, rowsSelectionCallback } = props;
   headers.forEach((h) => {
     columns.push(h as GridColDef);
   });

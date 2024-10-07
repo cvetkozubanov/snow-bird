@@ -9,6 +9,7 @@ import AppTheme from './components/shared-theme/AppTheme';
 export const App = (props: { disableCustomTheme?: boolean }) => {
   const { user: currentUser } = useContext(AuthContext);
   let routes = null;
+  console.log(11111, currentUser);
   if (currentUser) {
     routes = (
       <Routes>
